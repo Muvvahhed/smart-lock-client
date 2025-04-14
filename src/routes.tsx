@@ -4,6 +4,8 @@ import { ErrorBoundary } from './components/ErrorBoundary'
 import LoginPage from './pages/auth/LoginPage'
 import HomeLayout from './layouts/HomeLayout'
 import DashboardPage from './pages/dashboard/DashboardPage'
+import UsersPage from './pages/users/UsersPage'
+import DoorPage from './pages/door/DoorPage'
 export const router = createBrowserRouter([
 	{
 		path: '/',
@@ -12,6 +14,14 @@ export const router = createBrowserRouter([
 			{
 				path: '',
 				element: <DashboardPage />,
+			},
+			{
+				path: '/users',
+				element: <UsersPage />,
+			},
+			{
+				path: '/door',
+				element: <DoorPage />,
 			},
 		],
 		errorElement: <ErrorBoundary />,

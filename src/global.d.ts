@@ -9,6 +9,7 @@ export type TUser = {
 	isActive: boolean
 	lastLogin?: Date
 	createdAt: Date
+	pin?: string
 }
 
 export type TDevice = {

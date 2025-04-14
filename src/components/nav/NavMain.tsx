@@ -43,7 +43,7 @@ export function NavMain({
 									to={item.url}
 									className={`${
 										item.url === currentPath && 'bg-primary/10 text-primary '
-									} hover:bg-primary/10 hover:text-primary`}
+									} hover:bg-neutral-200 hover:text-primary`}
 								>
 									<item.icon />
 									<span>{item.title}</span>

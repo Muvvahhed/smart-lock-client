@@ -25,9 +25,9 @@ import { TUser } from '@/global'
 
 const navMain = [
 	{ icon: LayoutDashboard, title: 'Dashboard', url: '/' },
-	{ icon: Users, title: 'Manage Students', url: '/users' },
+	{ icon: Users, title: 'Manage Users', url: '/users' },
 	{ icon: DoorClosed, title: 'Door Control', url: '/door' },
-	{ icon: BarChart4, title: 'Analytics', url: '/analytics' },
+	// { icon: BarChart4, title: 'Analytics', url: '/analytics' },
 	{ icon: Settings, title: 'Settings', url: '/settings' },
 ]
 
@@ -42,7 +42,7 @@ export function AppSidebar({
 					<SidebarMenuItem>
 						<SidebarMenuButton size="lg" asChild>
 							<Link to="/">
-								<Lock className="h-10 w-10 text-primary" />
+								<Lock className="text-xl text-primary" />
 								<div className="grid flex-1 text-left text-xl leading-tight">
 									<span className="truncate font-semibold text-primary">
 										Smart Lock
