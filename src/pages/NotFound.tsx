@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button'
-import { Home, ArrowLeft } from 'lucide-react'
+import { Home, ArrowLeft, Lock } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { Fingerprint } from 'lucide-react'
 
 function NotFoundPage() {
 	const navigate = useNavigate()
@@ -10,7 +9,9 @@ function NotFoundPage() {
 		<div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
 			<div className="w-full max-w-md space-y-8 text-center">
 				<div className="flex flex-col items-center">
-					<Fingerprint size={80} className="text-primary mb-2" />
+					<div className="flex justify-center">
+						<Lock className="h-12 w-12 text-primary" />
+					</div>
 					<h1 className="text-9xl font-extrabold tracking-tighter text-primary">
 						404
 					</h1>

@@ -1,70 +1,42 @@
 export type TUser = {
 	_id: string
-	firstName: string
-	lastName: string
-	username: string
-	role: 'admin' | 'lecturer' | 'student'
-	chatHistory: TChat[]
+	email: string
+	deviceId: string
+	fullName: string
+	role: 'admin' | 'user'
+	biometricEnrolled: boolean
+	biometricId: number
+	isActive: boolean
+	lastLogin?: Date
+	createdAt: Date
 }
 
-export type TStudent = {
+export type TDevice = {
 	_id: string
-	regNo: string
-	fingerprintId: string
-	isFingerprintRegistered: boolean
-	enrolledCourses: TCourse[]
-	user: TUser
+	deviceId: string
+	lockState: 'locked' | 'unlocked'
+	batteryLevel: number
+	wifiStatus?: boolean
+	createdAt: Date
+	updatedAt: Date
 }
 
-export type Attendance = {
+export type TNotification = {
 	_id: string
-	course: TCourse
-	recordedDate: string
-	student: TStudent
-	attendanceSheet: string
-	checkInTime?: string
-	recordMethod: 'manual' | 'biometric'
-}
-
-export type AttendanceSheet = {
-	_id: string
-	course: TCourse
-	sessionDate: string
-	isCompleted: boolean
-	attendanceRecords: Attendance[]
-}
-
-export type Course = {
-	_id: string
-	code: string
-	name: string
-	attendance: { student: TStudent; daysPresent: number }[]
-	examAttendance: { student: TStudent; signIn: boolean; signOut: boolean }[]
-	signIn: boolean
-	signout: boolean
-}
-export type TCourse = {
-	_id: string
-	courseCode: string
-	courseTitle: string
-	students: TStudent[]
-	attendanceMode: boolean
-}
-
-export type TAttendance = {
-	_id: string
-	students: TStudent[]
-	course: TCourse
-	completed: boolean
-	createdAt: string
-}
-
-export type TChat = {
-	_id: string
-	sender: TUser
-	receiver: TUser
+	user: string | TUser
+	type: 'security' | 'system' | 'info'
 	message: string
 	read: boolean
-	timestamp: string
-	createdAt: string
+	createdAt: Date
+	updatedAt: Date
+}
+
+export type TAccessLog = {
+	_id: string
+	user: string | TUser
+	accessMethod: 'pin' | 'biometric' | 'mobile'
+	success: boolean
+	notes?: string
+	createdAt: Date
+	updatedAt: Date
 }

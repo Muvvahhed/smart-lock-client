@@ -25,7 +25,7 @@ export function NavUser({ user }: { user: TUser }) {
 	const { isMobile } = useSidebar()
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	const fullName = `${user.firstName} ${user.lastName}`
+	const fullName = user.fullName
 
 	const handleLogout = () => {
 		dispatch(logout())
@@ -44,8 +44,8 @@ export function NavUser({ user }: { user: TUser }) {
 						>
 							<Avatar name={fullName} size="36" round="8px" />
 							<div className="grid flex-1 text-left text-sm leading-tight">
-								<span className="truncate font-semibold capitalize">
-									{user.username}
+								<span className="truncate font-semibold lowercase">
+									{user.email}
 								</span>
 								<span className="truncate text-xs capitalize">{fullName}</span>
 							</div>
@@ -62,8 +62,8 @@ export function NavUser({ user }: { user: TUser }) {
 							<div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
 								<Avatar name={fullName} size="36" round="8px" />
 								<div className="grid flex-1 text-left text-sm leading-tight">
-									<span className="truncate font-semibold capitalize">
-										{user.username}
+									<span className="truncate font-semibold lowercase">
+										{user.email}
 									</span>
 									<span className="truncate text-xs capitalize">
 										{fullName}
