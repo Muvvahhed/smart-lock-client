@@ -21,7 +21,7 @@ interface AccessLog {
 		fullName: string
 		email: string
 	}
-	accessMethod: 'pin' | 'biometric' | 'mobile' | 'web'
+	accessMethod: 'pin' | 'biometric' | 'mobile'
 	action: string
 	success: boolean
 	notes?: string

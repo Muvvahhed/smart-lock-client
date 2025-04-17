@@ -356,9 +356,7 @@ function DashboardPage() {
 																: activity.accessMethod === 'biometric'
 																? 'Fingerprint'
 																: activity.accessMethod === 'mobile'
-																? 'Mobile App'
-																: activity.accessMethod === 'web'
-																? 'Web Dashboard'
+																? 'Dashboard'
 																: 'Unknown'}
 														</p>
 													</div>
