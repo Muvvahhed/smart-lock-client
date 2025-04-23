@@ -24,17 +24,16 @@ export const router = createBrowserRouter([
 				path: '/door',
 				element: <DoorPage />,
 			},
+			{
+				path: '/settings',
+				element: <SettingsPage />,
+			},
 		],
 		errorElement: <ErrorBoundary />,
 	},
 	{
 		path: '/login',
 		element: <LoginPage />,
-		errorElement: <ErrorBoundary />,
-	},
-	{
-		path: '/settings',
-		element: <SettingsPage />,
 		errorElement: <ErrorBoundary />,
 	},
 
