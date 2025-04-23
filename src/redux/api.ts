@@ -21,7 +21,7 @@ interface AccessLog {
 		fullName: string
 		email: string
 	}
-	accessMethod: 'pin' | 'biometric' | 'mobile'
+	accessMethod: 'keypad' | 'fingerprint' | 'mobile'
 	action: string
 	success: boolean
 	notes?: string
@@ -182,6 +182,18 @@ export const basApi = createApi({
 			}),
 			invalidatesTags: ['Device', 'Dashboard'],
 		}),
+
+		changePassword: builder.mutation<
+			{ success: boolean; message: string }, // Expected success response type
+			{ currentPassword: string; newPassword: string } // Request body type
+		>({
+			query: (credentials) => ({
+				url: '/users/change-password',
+				method: 'PUT',
+				body: credentials,
+			}),
+			invalidatesTags: ['User'], // Invalidate user cache on password change
+		}),
 	}),
 })
 
@@ -196,4 +208,5 @@ export const {
 	useGetAccessLogsQuery,
 	useGetDashboardSummaryQuery,
 	useRunDiagnosticsMutation,
+	useChangePasswordMutation,
 } = basApi

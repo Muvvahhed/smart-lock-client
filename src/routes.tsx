@@ -6,6 +6,7 @@ import HomeLayout from './layouts/HomeLayout'
 import DashboardPage from './pages/dashboard/DashboardPage'
 import UsersPage from './pages/users/UsersPage'
 import DoorPage from './pages/door/DoorPage'
+import SettingsPage from './pages/Settings'
 export const router = createBrowserRouter([
 	{
 		path: '/',
@@ -29,6 +30,11 @@ export const router = createBrowserRouter([
 	{
 		path: '/login',
 		element: <LoginPage />,
+		errorElement: <ErrorBoundary />,
+	},
+	{
+		path: '/settings',
+		element: <SettingsPage />,
 		errorElement: <ErrorBoundary />,
 	},
 

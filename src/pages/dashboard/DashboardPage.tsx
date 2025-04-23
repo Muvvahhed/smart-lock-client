@@ -30,6 +30,7 @@ import {
 	useRunDiagnosticsMutation,
 } from '@/redux/api'
 import { formatDate } from '@/lib/utils'
+import { useAppSelector } from '@/redux/hook'
 
 function DashboardPage() {
 	const [currentDateTime, setCurrentDateTime] = useState(new Date())
@@ -42,6 +43,8 @@ function DashboardPage() {
 		refetch,
 	} = useGetDashboardSummaryQuery()
 
+	const state = useAppSelector((state) => state.socket.isConnected)
+
 	// Door control mutation
 	const [controlDoor, { isLoading: isControlling }] = useControlDoorMutation()
 
@@ -53,7 +56,7 @@ function DashboardPage() {
 	const doorLocked = dashboardData?.device?.lockState === 'locked'
 	const batteryLevel = dashboardData?.device?.batteryLevel || 0
 	const wifiStrength = dashboardData?.device?.wifiStrength || 0
-	const deviceStatus = dashboardData?.device?.status || 'offline'
+	const deviceStatus = state ? 'online' : 'offline'
 	const lastCheckIn = dashboardData?.device?.lastCheckIn
 	const recentActivity = dashboardData?.recentLogs || []
 
@@ -351,9 +354,9 @@ function DashboardPage() {
 														</p>
 														<p className="text-sm text-muted-foreground">
 															{activity.action || 'Access attempt'} via{' '}
-															{activity.accessMethod === 'pin'
+															{activity.accessMethod === 'keypad'
 																? 'PIN'
-																: activity.accessMethod === 'biometric'
+																: activity.accessMethod === 'fingerprint'
 																? 'Fingerprint'
 																: activity.accessMethod === 'mobile'
 																? 'Dashboard'

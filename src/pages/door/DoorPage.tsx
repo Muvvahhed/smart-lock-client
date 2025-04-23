@@ -245,12 +245,12 @@ function DoorPage() {
 											{accessLogs.map((log) => (
 												<TableRow key={log._id}>
 													<TableCell className="font-medium">
-														{log.user.fullName}
+														{log.user?.fullName ?? 'UnKnown'}
 													</TableCell>
 													<TableCell>
-														{log.accessMethod === 'pin'
+														{log.accessMethod === 'keypad'
 															? 'PIN'
-															: log.accessMethod === 'biometric'
+															: log.accessMethod === 'fingerprint'
 															? 'Fingerprint'
 															: log.accessMethod === 'mobile'
 															? 'Mobile App'
