@@ -194,6 +194,19 @@ export const basApi = createApi({
 			}),
 			invalidatesTags: ['User'], // Invalidate user cache on password change
 		}),
+
+		verifyOtp: builder.mutation({
+			query: (credentials) => ({
+				url: '/user/verify-otp',
+				method: 'POST',
+				body: credentials,
+			}),
+			transformResponse: (response: {
+				data: { token: string; user: TUser }
+			}) => {
+				return response.data
+			}
+		}),
 	}),
 })
 
@@ -209,4 +222,5 @@ export const {
 	useGetDashboardSummaryQuery,
 	useRunDiagnosticsMutation,
 	useChangePasswordMutation,
+	useVerifyOtpMutation,
 } = basApi
